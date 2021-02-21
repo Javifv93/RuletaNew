@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ruleta</string>
+    <string name="boton_menu_principal_ruleta">Jugar</string>
 </resources>
