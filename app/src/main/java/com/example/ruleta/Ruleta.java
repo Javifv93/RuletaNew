@@ -73,12 +73,17 @@ public class Ruleta extends AppCompatActivity {
             }
         });
     }
+    /**Metodo al que se llama cada vez que se clicka un vaso. Se le pasa por parametro la posicion del vaso y el ImageButton de ese vaso.
+     * Si la posicion del vaso es igual que la del vaso envenenada, settea el fondo al de veneno, y si no, settea el fondo del vaso vacio.
+     * Además, si es el vaso envenenado hace una llamada al metodo game_over*/
     private void beber(int posicion_vaso, ImageButton vaso_elegido){
         vaso_elegido.setBackgroundResource((vaso_envenenado == posicion_vaso)
                 ? R.drawable.veneno
                 : R.drawable.vaso_vacio);
         if(vaso_envenenado == posicion_vaso){ game_over(); }
     }
+    /**Metodo que se ejecuta cuando se pulsa en el vaso envenenado. Hace visible el View fondo_game_over y le settea el fondo game_over_2.
+     * Genera una animacion de fading y le settea a la View un onClick que nos llevará a la activity principal*/
     private void game_over(){
         fondo_game_over.setVisibility(View.VISIBLE);
         fondo_game_over.setBackgroundResource(R.drawable.game_over_2);
@@ -95,11 +100,11 @@ public class Ruleta extends AppCompatActivity {
             }
         });
     }
+    /**Metodo que le settea a la variable vaso_envenenado un valor entero aleatorio entre el 1 y el 6*/
     private void envenenar_al_azar(){
         vaso_envenenado = 10;
         while (vaso_envenenado>6) {
             vaso_envenenado = (int) (Math.random() * 10) + 1;
         }
-        System.out.println(vaso_envenenado);
     }
 }

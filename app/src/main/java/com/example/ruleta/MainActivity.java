@@ -26,15 +26,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
+        getSupportActionBar().hide(); //Oculta la AppBar
 
         boton = (Button) findViewById(R.id.boton);
-        boton.setVisibility(View.INVISIBLE);
+        boton.setVisibility(View.INVISIBLE);    //Oculta el botón de cambio de activity
 
         activity = (View) findViewById(R.id.activity);
         fondo = (View) findViewById(R.id.fondo);
         contador = 0;
         fondo.setOnClickListener(new View.OnClickListener() {
+            /**Listener onClick que permite avanzar en la sucesión de animaciones mediante un contador incremental y sucesivas llamadas
+             * al método splash*/
             @Override
             public void onClick(View v) {
                 switch (contador){
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /**Metodo que, pasandole el fondo como valor drawable, settea ese fondo en el View fondo con un fading de 2s*/
     public void splash(int value){
         fondo.setBackgroundResource(value);
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         alphaAnimation.setRepeatMode(Animation.REVERSE);
         fondo.startAnimation(alphaAnimation);
     }
+    /**Metodo que se invoca al final de switch para restablecer la visibilidad del boton de Jugar, el cual tiene un listener para
+     * cambiar de activity a la de la ruleta*/
     private void cargarMenuPrincipal(){
         boton.setVisibility(View.VISIBLE);
         boton.setOnClickListener(new View.OnClickListener() {
